@@ -17,34 +17,27 @@ export class GenerateComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-    this.mazemaker.initBoard()
-    this.mazemaker.initCursor()
+    this.onInitMaze()                //initalize the overall game environment
+    this.onGenerateMaze()            //by pressing both player control buttons
    }
 
- 
-  onInitMaze(){
-    console.log('at generateMaze')
+  onInitMaze(){                      //listener for the Clearmaze button
     this.mazemaker.initBoard()
     this.mazemaker.initCursor()
     this.mazemaker.redrawBoard()
+    this.mazeplay.initPlayer()
+    this.generateMaze()
   }
 
-  onMove(){
+  generateMaze(){
     let keepgoing:boolean = true
-    while (keepgoing) {                                //iterate until maze generation is complete
+    while (keepgoing) {               //iterate until maze generation is complete
       let result:string = this.mazemaker.runAlgo()
       if (result === 'complete') {keepgoing = false}  
-      
-      //this.mazemaker.drawCursor()
       this.mazeplay.board  = this.mazemaker.board
       console.log('board has moved over:')
     }
     this.mazemaker.redrawBoard()
+    this.mazeplay.drawPlayer()
   }
-
-  onRedrawMaze(){
-    this.mazemaker.redrawBoard()
-
-  }
-  
 }

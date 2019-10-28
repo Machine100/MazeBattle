@@ -1,7 +1,10 @@
-.grid-container{
-    display:grid;
+.border-container {
     border-style: solid;
     border-color: lightcyan;
+}
+
+.grid-container{
+    display:grid;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
 }

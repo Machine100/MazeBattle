@@ -61,7 +61,7 @@ export class MazeplayService {
         let left:boolean = this.board[row][column].wallLeft
         let right:boolean = this.board[row][column].wallRight
 
-        if (!!(right&&left&&up&&down)){document.getElementById(this.board[row][column].id).className = 'none'}
+        if (!(right&&left&&up&&down)){document.getElementById(this.board[row][column].id).className = 'none'}
 
         if (up) {document.getElementById(this.board[row][column].id).className = 'u'};
         if (down) {document.getElementById(this.board[row][column].id).className = 'd'};
