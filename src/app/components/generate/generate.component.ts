@@ -18,7 +18,7 @@ export class GenerateComponent implements OnInit {
 
   ngOnInit() {
     this.onInitMaze()                //initalize the overall game environment
-    this.onGenerateMaze()            //by pressing both player control buttons
+    this.generateMaze()            //by pressing both player control buttons
    }
 
   onInitMaze(){                      //listener for the Clearmaze button
