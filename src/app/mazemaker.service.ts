@@ -86,10 +86,10 @@ export class MazemakerService {
 
   drawCursor(){
     let cursorId:string = this.cursorRow.toString() + this.cursorColumn.toString()
-    console.log('id:',cursorId)
-    console.log ('classList:', document.getElementById(cursorId).classList.item(0))
+    //console.log('id:',cursorId)
+    console.log ('drawcursorclassList0:', document.getElementById(cursorId).classList.item(0))
     document.getElementById(cursorId).classList.add('filled')
-    console.log ('classList:', document.getElementById(cursorId).classList.item(1))
+    console.log ('drawcursorclassList1:', document.getElementById(cursorId).classList.item(1))
   }
 
   checkDown(){
@@ -210,6 +210,8 @@ export class MazemakerService {
         if (this.stack.length === 0) return 'complete' //maze is complete
       }
     }  
+
+    //this.drawCursor()
     this.knockoutWalls(chosenDirection)
     this.moveCursor(chosenDirection)
     this.stack.push(cursorId)                //push current position onto stack
