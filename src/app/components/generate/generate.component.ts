@@ -18,10 +18,10 @@ export class GenerateComponent implements OnInit {
 
   ngOnInit() {
     this.onInitMaze()                //initalize the overall game environment
-    this.generateMaze()            //by pressing both player control buttons
+    this.generateMaze()              //by pressing both player control buttons
    }
 
-  onInitMaze(){                      //listener for the Clearmaze button
+  onInitMaze() {                      //listener for the Clearmaze button
     this.mazemaker.initBoard()
     this.mazemaker.initCursor()
     this.mazemaker.redrawBoard()
@@ -29,7 +29,7 @@ export class GenerateComponent implements OnInit {
     this.generateMaze()
   }
 
-  generateMaze(){
+  generateMaze() {
     let keepgoing:boolean = true
     while (keepgoing) {               //iterate until maze generation is complete
       let result:string = this.mazemaker.runAlgo()

@@ -12,12 +12,12 @@ export class MazeplayService {
 
   constructor() { this.initPlayer() }
 
-  initPlayer (){ 
+  initPlayer() { 
     this.playerRow = 0
     this.playerColumn = 0
   }
 
-  validateMove (direction:string){                     //check if boundary blocks the move
+  validateMove(direction:string) {                     //check if boundary blocks the move
     if (this.playerRow === 0 && direction === 'up') { console.log('invalid move'); return false }     
     if (this.playerRow === 9 && direction === 'down') { console.log('invalid move'); return false }   
     if (this.playerColumn === 0 && direction === 'left') { console.log('invalid move'); return false }
@@ -33,7 +33,7 @@ export class MazeplayService {
     return true
   }
   
-  movePlayer(direction:string){
+  movePlayer(direction:string) {
     switch (direction) {
       case 'down': ++this.playerRow; break
       case 'right': ++this.playerColumn; break
@@ -43,7 +43,7 @@ export class MazeplayService {
     console.log('playerRow',this.playerRow,'playerColumn:',this.playerColumn)
   }
 
-  drawPlayer(){
+  drawPlayer() {
     let playerId:string = this.playerRow.toString() + this.playerColumn.toString()
     console.log('id:',playerId)
     console.log ('classList:', document.getElementById(playerId).classList.item(0))
@@ -51,7 +51,7 @@ export class MazeplayService {
     console.log ('classList:', document.getElementById(playerId).classList.item(1))
   }
 
-   redrawBoard (){
+   redrawBoard() {
     let row:number = 0
     let column:number = 0
     for (row=0; row<10; row++){
@@ -61,26 +61,26 @@ export class MazeplayService {
         let left:boolean = this.board[row][column].wallLeft
         let right:boolean = this.board[row][column].wallRight
 
-        if (!(right&&left&&up&&down)){document.getElementById(this.board[row][column].id).className = 'none'}
+        if (!(right&&left&&up&&down)) { document.getElementById(this.board[row][column].id).className = 'none' }
 
-        if (up) {document.getElementById(this.board[row][column].id).className = 'u'};
-        if (down) {document.getElementById(this.board[row][column].id).className = 'd'};
-        if (left) {document.getElementById(this.board[row][column].id).className = 'l'};
-        if (right) {document.getElementById(this.board[row][column].id).className = 'r'};
+        if (up) { document.getElementById(this.board[row][column].id).className = 'u' };
+        if (down) { document.getElementById(this.board[row][column].id).className = 'd' };
+        if (left) { document.getElementById(this.board[row][column].id).className = 'l' };
+        if (right) { document.getElementById(this.board[row][column].id).className = 'r' };
 
-        if (up&&down) {document.getElementById(this.board[row][column].id).className = 'ud'}; 
-        if (left&&down) {document.getElementById(this.board[row][column].id).className = 'ld'};
-        if (left&&up) {document.getElementById(this.board[row][column].id).className = 'lu'};
-        if (right&&down) {document.getElementById(this.board[row][column].id).className = 'rd'};
-        if (right&&up) {document.getElementById(this.board[row][column].id).className = 'ru'};
-        if (right&&left) {document.getElementById(this.board[row][column].id).className = 'rl'};
+        if (up&&down) { document.getElementById(this.board[row][column].id).className = 'ud' }; 
+        if (left&&down) { document.getElementById(this.board[row][column].id).className = 'ld' };
+        if (left&&up) { document.getElementById(this.board[row][column].id).className = 'lu' };
+        if (right&&down) { document.getElementById(this.board[row][column].id).className = 'rd' };
+        if (right&&up) { document.getElementById(this.board[row][column].id).className = 'ru' };
+        if (right&&left) { document.getElementById(this.board[row][column].id).className = 'rl' };
 
-        if (left&&up&&down) {document.getElementById(this.board[row][column].id).className = 'lud'};
-        if (right&&up&&down) {document.getElementById(this.board[row][column].id).className = 'rud'};
-        if (right&&left&&down) {document.getElementById(this.board[row][column].id).className = 'rld'};
-        if (right&&left&&up) {document.getElementById(this.board[row][column].id).className = 'rlu'};
+        if (left&&up&&down) { document.getElementById(this.board[row][column].id).className = 'lud' };
+        if (right&&up&&down) { document.getElementById(this.board[row][column].id).className = 'rud' };
+        if (right&&left&&down) { document.getElementById(this.board[row][column].id).className = 'rld' };
+        if (right&&left&&up) { document.getElementById(this.board[row][column].id).className = 'rlu' };
 
-        if (right&&left&&up&&down) {document.getElementById(this.board[row][column].id).className = 'rlud'};
+        if (right&&left&&up&&down) { document.getElementById(this.board[row][column].id).className = 'rlud' };
 
       }
     }
