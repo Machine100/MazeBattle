@@ -33,7 +33,7 @@ export class GenerateComponent implements OnInit {
     let keepgoing:boolean = true
     while (keepgoing) {               //iterate until maze generation is complete
       let result:string = this.mazemaker.runAlgo()
-      if (result === 'complete') {keepgoing = false}  
+      if (result === 'complete') { keepgoing = false }  
       this.mazeplay.board  = this.mazemaker.board
       console.log('board has moved over:')
     }
