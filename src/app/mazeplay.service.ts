@@ -25,14 +25,26 @@ export class MazeplayService {
 
     // let id:string = this.playerRow.toString() + this.playerColumn.toString()
     // console.log ('id:',id)                           //check if a wall blocks the move
-    if (this.board[this.playerRow][this.playerColumn].wallUp === true && direction === 'up') { console.log('wall block'); return false } 
-    if (this.board[this.playerRow][this.playerColumn].wallDown === true && direction === 'down') { console.log('wall block'); return false } 
-    if (this.board[this.playerRow][this.playerColumn].wallLeft === true && direction === 'left') { console.log('wall block'); return false }
-    if (this.board[this.playerRow][this.playerColumn].wallRight === true && direction === 'right') { console.log('wall block'); return false } 
-     
+    if (this.board[this.playerRow][this.playerColumn].wallUp === true && direction === 'up') {
+      console.log('wall block')
+      return false
+     }
+    if (this.board[this.playerRow][this.playerColumn].wallDown === true && direction === 'down') {
+      console.log('wall block')
+      return false
+    }
+    if (this.board[this.playerRow][this.playerColumn].wallLeft === true && direction === 'left') {
+      console.log('wall block')
+      return false
+    }
+    if (this.board[this.playerRow][this.playerColumn].wallRight === true && direction === 'right') {
+      console.log('wall block')
+      return false
+    }
+
     return true
   }
-  
+
   movePlayer(direction: string) {
     switch (direction) {
       case 'down': ++this.playerRow; break
@@ -44,7 +56,7 @@ export class MazeplayService {
   }
 
   drawPlayer() {
-    let playerId: string = this.playerRow.toString() + this.playerColumn.toString()
+    const playerId: string = this.playerRow.toString() + this.playerColumn.toString()
     console.log('id:',playerId)
     console.log ('classList:', document.getElementById(playerId).classList.item(0))
     document.getElementById(playerId).classList.add('player-here')
@@ -85,5 +97,5 @@ export class MazeplayService {
       }
     }
   }
-   
+
 }

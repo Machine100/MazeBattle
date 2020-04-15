@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MazemakerService } from '../../mazemaker.service'
-import { MazeplayService } from '../../mazeplay.service'
-//import { Cell } from '../../models/cell'
-//import { DeprecatedDatePipe } from '@angular/common';
+import { MazemakerService } from '../../mazemaker.service';
+import { MazeplayService } from '../../mazeplay.service';
 
 @Component({
   selector: 'app-generate',
@@ -17,11 +15,11 @@ export class GenerateComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-    this.onInitMaze()                //initalize the overall game environment
-    this.generateMaze()              //by pressing both player control buttons
+    this.onInitMaze()                // initalize the overall game environment
+    this.generateMaze()              // by pressing both player control buttons
    }
 
-  onInitMaze() {                      //listener for the Clearmaze button
+  onInitMaze() {                      // listener for the Clearmaze button
     this.mazemaker.initBoard()
     this.mazemaker.initCursor()
     this.mazemaker.redrawBoard()
@@ -30,10 +28,10 @@ export class GenerateComponent implements OnInit {
   }
 
   generateMaze() {
-    let keepgoing:boolean = true
-    while (keepgoing) {               //iterate until maze generation is complete
-      let result:string = this.mazemaker.runAlgo()
-      if (result === 'complete') { keepgoing = false }  
+    let keepgoing = true
+    while (keepgoing) {               // iterate until maze generation is complete
+      const result: string = this.mazemaker.runAlgo()
+      if (result === 'complete') { keepgoing = false }
       this.mazeplay.board  = this.mazemaker.board
       console.log('board has moved over:')
     }

@@ -10,7 +10,7 @@ export class MazemakerService {
 
   cursorRow: number
   cursorColumn: number
-  board: Cell[][]                     //a 2D array of objects representing each space on the maze
+  board: Cell[][]                     // a 2D array of objects representing each space on the maze
   stack: string[]
 
   initBoard() {
@@ -29,7 +29,7 @@ export class MazemakerService {
           }
       }
     }
-    console.log('board:',this.board)
+    console.log('board:', this.board)
   }
 
   redrawBoard() {
@@ -37,10 +37,10 @@ export class MazemakerService {
     let column = 0
     for (row = 0; row < 10; row++) {
       for (column = 0; column < 10; column++) {
-        let up: boolean = this.board[row][column].wallUp
-        let down: boolean = this.board[row][column].wallDown
-        let left: boolean = this.board[row][column].wallLeft
-        let right: boolean = this.board[row][column].wallRight
+        const up: boolean = this.board[row][column].wallUp
+        const down: boolean = this.board[row][column].wallDown
+        const left: boolean = this.board[row][column].wallLeft
+        const right: boolean = this.board[row][column].wallRight
 
         if (!(right && left && up && down)) { document.getElementById(this.board[row][column].id).className = 'none' }
 
@@ -65,7 +65,7 @@ export class MazemakerService {
       }
     }
   }
-  
+
   initGrid() {
     let row = 0
     let column = 0
@@ -93,43 +93,39 @@ export class MazemakerService {
   }
 
   checkDown() {
-    let onStack: boolean = false
+    let onStack = false
     const result = this.board[this.cursorRow + 1][this.cursorColumn]
     this.stack.forEach(item => {                                       // check if id is on stack
       if (item === result.id) { onStack = true }
     })
-    if ((result.visited) || (onStack)) { return false }
-    else { return true }
+    if ((result.visited) || (onStack)) { return false } else { return true }
   }
 
   checkRight() {
-    let onStack:boolean = false
+    let onStack = false
     const result = this.board[this.cursorRow][this.cursorColumn + 1]
     this.stack.forEach(item => {                                       // check if id is on stack
       if (item === result.id) { onStack = true }
     })
-    if ( (result.visited) || (onStack) ) { return false }
-    else { return true }
+    if ( (result.visited) || (onStack) ) { return false } else { return true }
   }
 
   checkLeft() {
-    let onStack: boolean = false
+    let onStack = false
     const result = this.board[this.cursorRow][this.cursorColumn - 1]
     this.stack.forEach(item => {                                       // check if id is on stack
       if (item === result.id) { onStack = true }
     })
-    if ( (result.visited) || (onStack) ) { return false }
-    else { return true }
+    if ( (result.visited) || (onStack) ) { return false } else { return true }
   }
 
   checkUp() {
-    let onStack: boolean = false
-    let result = this.board[this.cursorRow - 1][this.cursorColumn]
+    let onStack = false
+    const result = this.board[this.cursorRow - 1][this.cursorColumn]
     this.stack.forEach(item => {                                       // check if id is on stack
       if (item === result.id) { onStack = true }
     })
-    if ( (result.visited) || (onStack) ) { return false }
-    else { return true }
+    if ( (result.visited) || (onStack) ) { return false } else { return true }
   }
 
   chooseMove() {
@@ -154,7 +150,7 @@ export class MazemakerService {
   }
 
   knockoutWalls(direction: string) {
-    console.log('at knockoutWalls','direction:', direction)
+    console.log('at knockoutWalls', 'direction:', direction)
     switch (direction) {
       case 'down':
         this.board[this.cursorRow][this.cursorColumn].wallDown = false
